@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.mb0 {
+  margin-bottom: 0px;
+}
+.mb5 {
+  margin-bottom: 5px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+.mb15 {
+  margin-bottom: 15px;
+}
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb25 {
+  margin-bottom: 25px;
+}
+.mb30 {
+  margin-bottom: 30px;
+}
+.mb35 {
+  margin-bottom: 35px;
+}
+.mb40 {
+  margin-bottom: 40px;
+}
+.mb45 {
+  margin-bottom: 45px;
+}
+.mb50 {
+  margin-bottom: 50px;
+}
+body {
+  padding: 0;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+.container {
+  padding: 20px;
+}
+.main-title {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #ccc;
+  font-size: 20px;
+}
+.play-list-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: solid 1px #ccc;
+}
+.playground-header {
+  margin-bottom: 20px;
+}
+.step-header {
+  margin-bottom: 5px;
+}
+.step-num {
+  font-weight: normal;
+}
+.step-num:hover {
+  cursor: pointer;
+}
+.play-code {
+  display: none;
+}
+.is-open {
+  display: block;
+  animation: show 1s linear 0s;
+}
+.env {
+  padding: 10px;
+  border: solid 1px #ccc;
+}
+.env-title {
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.information {
+  margin-top: 10px;
+}
+.play-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.guidance li {
+  margin-bottom: 10px;
+}
+.marker {
+  padding: 2px;
+}
+.highlight {
+  background-color: #ff0;
+}
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

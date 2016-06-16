@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Swift First Step
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='css/highlight.pack.css')
+    link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='css/app.css')
+
+  body
+
+    .container
+
+        section
+            .playground-header
+                h2.main-title Swift Seminar
+
+        section.env.mb20
+            h2.env-title 実行環境
+            | OS X El Capitan 10.11.5 <br> Xcode 8.0 beta(8S128d)
+
+        h3.play-title Step1
+
+        ul.guidance
+            li Xcodeを起動する。
+            img(src="images/step1_xcode_01.png", width="50%")
+
+            li <i class="marker highlight">Create a new Xcode project</i>を選択する。
+
+            li <i class="marker highlight">Game</i>を選択して<i class="marker highlight">Next</i>を押下する。
+            img(src="images/step1_xcode_02.png", width="50%")
+
+            li アプリ名、組織名は任意のものを入れて<i class="marker highlight">Next</i>を押下する。
+            img(src="images/step1_xcode_03.png", width="50%")
+
+            li 任意のディレクトリを選択して<i class="marker highlight">Next</i>を押下する。
+            img(src="images/step1_xcode_04.png", width="50%")
+
+        section.playground
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> step1:「Hello, world」を出力する。
+                    .play-code
+                        include:markdown ../md/SimpleValues/step1.md
+
+    #react
+
+
+    script(src='js/react-with-addons-0.13.1.js')
+    script(src='js/bundle.js')
+    script(src='js/highlight.pack.js')
+    script(type="text/javascript").
+        hljs.initHighlightingOnLoad();
