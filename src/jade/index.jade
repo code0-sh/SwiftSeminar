@@ -20,30 +20,44 @@ html
             h2.env-title 実行環境
             | OS X El Capitan 10.11.5 <br> Xcode 8.0 beta(8S128d)
 
-        h3.play-title Step1
+        h3.play-title Seminar1
 
-        ul.guidance
-            li Xcodeを起動する。
-            img(src="images/step1_xcode_01.png", width="50%")
-
-            li <i class="marker highlight">Create a new Xcode project</i>を選択する。
-
-            li <i class="marker highlight">Game</i>を選択して<i class="marker highlight">Next</i>を押下する。
-            img(src="images/step1_xcode_02.png", width="50%")
-
-            li アプリ名、組織名は任意のものを入れて<i class="marker highlight">Next</i>を押下する。
-            img(src="images/step1_xcode_03.png", width="50%")
-
-            li 任意のディレクトリを選択して<i class="marker highlight">Next</i>を押下する。
-            img(src="images/step1_xcode_04.png", width="50%")
+        p.mb10 ※各Stepのプログラムは
+            a(href="https://github.com/code0-sh/SwiftSeminarProgram", target="blank") こちら
+            | にあります。
 
         section.playground
             .play-list
                 .play-list-item
                     .step-header
-                        .step-num <i class="fa fa-plus-square"></i> step1:「Hello, world」を出力する。
+                        .step-num <i class="fa fa-plus-square"></i> Step1:プロジェクト作成
                     .play-code
-                        include:markdown ../md/SimpleValues/step1.md
+                        ul.guidance
+                            li Xcodeを起動し、Create a new Xcode project</i>を選択する。
+                            img(src="images/step1_xcode_01.png", width="50%")
+
+                            li <i class="marker highlight">Game</i>を選択して<i class="marker highlight">Next</i>を押下する。
+                            img(src="images/step1_xcode_02.png", width="50%")
+
+                            li アプリ名、組織名は任意のものを入れて<i class="marker highlight">Next</i>を押下する。
+                            img(src="images/step1_xcode_03.png", width="50%")
+
+                            li 任意のディレクトリを選択して<i class="marker highlight">Next</i>を押下する。
+                            img(src="images/step1_xcode_04.png", width="50%")
+
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step2:プロジェクト初期化
+                    .play-code
+                        ul.guidance
+                            li sksファイル(Actions.sks, GameScene.sks)を削除する。
+
+                            li GameScene.swift : GameSceneの中身を空にする。
+                                include:markdown ../md/Step2/1.md
+
+                            li GameViewController.swift : viewDidLoadを以下に変更する。
+                                include:markdown ../md/Step2/2.md
 
     #react
 

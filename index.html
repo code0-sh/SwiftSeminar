@@ -18,23 +18,63 @@
       <section class="env mb20">
         <h2 class="env-title">実行環境</h2>OS X El Capitan 10.11.5 <br> Xcode 8.0 beta(8S128d)
       </section>
-      <h3 class="play-title">Step1</h3>
-      <ul class="guidance">
-        <li>Xcodeを起動する。</li><img src="images/step1_xcode_01.png" width="50%">
-        <li><i class="marker highlight">Create a new Xcode project</i>を選択する。</li>
-        <li><i class="marker highlight">Game</i>を選択して<i class="marker highlight">Next</i>を押下する。</li><img src="images/step1_xcode_02.png" width="50%">
-        <li>アプリ名、組織名は任意のものを入れて<i class="marker highlight">Next</i>を押下する。</li><img src="images/step1_xcode_03.png" width="50%">
-        <li>任意のディレクトリを選択して<i class="marker highlight">Next</i>を押下する。</li><img src="images/step1_xcode_04.png" width="50%">
-      </ul>
+      <h3 class="play-title">Seminar1</h3>
+      <p class="mb10">※各Stepのプログラムは<a href="https://github.com/code0-sh/SwiftSeminarProgram" target="blank">こちら</a>にあります。</p>
       <section class="playground">
         <div class="play-list">
           <div class="play-list-item">
             <div class="step-header">
-              <div class="step-num"><i class="fa fa-plus-square"></i> step1:「Hello, world」を出力する。</div>
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step1:プロジェクト作成</div>
             </div>
-            <div class="play-code"><pre><code class="lang-swift">print(&quot;Hello, world&quot;)
+            <div class="play-code">
+              <ul class="guidance">
+                <li>Xcodeを起動し、Create a new Xcode project</i>を選択する。</li><img src="images/step1_xcode_01.png" width="50%">
+                <li><i class="marker highlight">Game</i>を選択して<i class="marker highlight">Next</i>を押下する。</li><img src="images/step1_xcode_02.png" width="50%">
+                <li>アプリ名、組織名は任意のものを入れて<i class="marker highlight">Next</i>を押下する。</li><img src="images/step1_xcode_03.png" width="50%">
+                <li>任意のディレクトリを選択して<i class="marker highlight">Next</i>を押下する。</li><img src="images/step1_xcode_04.png" width="50%">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step2:プロジェクト初期化</div>
+            </div>
+            <div class="play-code">
+              <ul class="guidance">
+                <li>sksファイル(Actions.sks, GameScene.sks)を削除する。</li>
+                <li>GameScene.swift : GameSceneの中身を空にする。<pre><code class="lang-swift">class GameScene: SKScene {
+
+}
 </code></pre>
 
+                </li>
+                <li>GameViewController.swift : viewDidLoadを以下に変更する。<pre><code class="lang-swift">    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // シーンの作成
+        let scene = GameScene()
+
+        // View ControllerのViewをSKView型として取り出す
+        let view = self.view as! SKView
+
+        // FPSの表示
+        view.showsFPS = true
+
+        // ノード数の表示
+        view.showsNodeCount = true
+
+        // シーンのサイズをビューに合わせる
+        scene.size = view.frame.size
+
+        // ビュー上にシーンを表示
+        view.presentScene(scene)
+    }
+</code></pre>
+
+                </li>
+              </ul>
             </div>
           </div>
         </div>
