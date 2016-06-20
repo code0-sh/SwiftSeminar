@@ -33,7 +33,7 @@ html
                         .step-num <i class="fa fa-plus-square"></i> Step1:プロジェクト作成
                     .play-code
                         ul.guidance
-                            li Xcodeを起動し、Create a new Xcode project</i>を選択する。
+                            li Xcodeを起動し、<i class="marker highlight">Create a new Xcode project</i>を選択する。
                             img(src="images/step1_xcode_01.png", width="50%")
 
                             li <i class="marker highlight">Game</i>を選択して<i class="marker highlight">Next</i>を押下する。
@@ -58,6 +58,26 @@ html
 
                             li GameViewController.swift : viewDidLoadを以下に変更する。
                                 include:markdown ../md/Step2/2.md
+
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step3: 文字を表示する
+                    .play-code
+                        include:markdown ../md/Step3/1.md
+
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step4: 画像を表示する
+                    .play-code
+                        ul.guidance
+                            li <i class="marker highlight">New Group</i>からimagesグループを作成する。
+
+                            li imagesグループに画像ファイル(person.png)をドラッグアンドドロップする。
+                            img(src="images/step4_xcode_01.png", width="50%")
+
+                        include:markdown ../md/Step4/1.md
 
     #react
 
