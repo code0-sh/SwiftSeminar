@@ -116,8 +116,7 @@
             </div>
             <div class="play-code">
               <ul class="guidance">
-                <li>Assets.xcassetsに画像ファイル(person.png)をドラッグアンドドロップする。</li><img src="images/step4_xcode_01.png" width="50%">
-              </ul><pre><code class="lang-swift">class GameScene: SKScene {
+                <li>Assets.xcassetsに画像ファイル(person.png)をドラッグアンドドロップする。</li><img src="images/step4_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
     /// Sceneが表示された際に実行される
     override func didMove(to view: SKView) {
         // スプライトを作成
@@ -134,6 +133,90 @@
 }
 </code></pre>
 
+                <li>Assets.xcassetsに画像ファイル(airplane.png)をドラッグアンドドロップする。</li><img src="images/step4_xcode_02.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
+    /// Sceneが表示された際に実行される
+    override func didMove(to view: SKView) {
+        // スプライトを作成
+        let sprite = SKSpriteNode(imageNamed: &quot;person.png&quot;)
+        // スプライトのサイズ
+        sprite.size = CGSize(width: 50, height: 50)
+        // スプライトの位置
+        sprite.position = CGPoint(x:self.frame.midX, y:self.frame.midY)
+        // スプライトを配置する
+        self.addChild(sprite)
+        // 画面の背景色
+        self.backgroundColor = UIColor.lightGray()
+
+        // 画像の差し替え
+        let texture = SKTexture(imageNamed: &quot;airplane.png&quot;)
+        sprite.texture = texture
+
+        // 色をブレンドする
+        sprite.color = #colorLiteral(red: 0.1991284192, green: 0.6028449535, blue: 0.9592232704, alpha: 1)
+        sprite.colorBlendFactor = 1
+    }
+}
+</code></pre>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step5: アニメーション</div>
+            </div>
+            <div class="play-code">
+              <ul class="guidance">
+                <li>Assets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。</li><img src="images/step5_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
+    /// 背景画像を設定する
+    func setupBackground(baseNode: SKNode) {
+        // 背景画像からテクスチャを作成
+        let texture = SKTexture(imageNamed: &quot;background&quot;)
+        // フィルタリングモード（テクスチャの本来のサイズ以外で描画される場合に使用される）
+        // .Linear クォリティー高い
+        // .Nearest クォリティー低い
+        texture.filteringMode = .nearest
+
+        // 必要な画像枚数を算出
+        let needHeightNumber = ceil(2.0 + (self.frame.size.height / texture.size().height))
+        let needWidthNumber = ceil(self.frame.size.width / texture.size().width)
+
+        print(&quot;frame height:\(self.frame.size.height)&quot;)
+        print(&quot;frame width:\(self.frame.size.width)&quot;)
+
+        print(&quot;texture height:\(texture.size().height)&quot;)
+        print(&quot;texture width:\(texture.size().width)&quot;)
+
+        print(&quot;needHeightNumber:\(needHeightNumber)&quot;)
+        print(&quot;needWidthNumber:\(needWidthNumber)&quot;)
+
+        // アニメーションを作成
+        let moveAnim = SKAction.moveBy(x: 0.0, y: -texture.size().height, duration: TimeInterval(texture.size().height / 10.0))
+        let resetAnim = SKAction.moveBy(x: 0.0, y: texture.size().height, duration: 0.0)
+        let repeatForeverAnim = SKAction.repeatForever(SKAction.sequence([moveAnim, resetAnim]))
+
+        // 画像の配置とアニメーションを設定
+        for j in 0 ..&lt; Int(needHeightNumber) {
+            let sprite = SKSpriteNode(texture: texture)
+            sprite.zPosition = -100.0
+            sprite.position = CGPoint(x:self.frame.midX, y: CGFloat(j)*sprite.size.height)
+            sprite.run(repeatForeverAnim)
+            baseNode.addChild(sprite)
+        }
+    }
+    /// Sceneが表示された際に実行される
+    override func didMove(to view: SKView) {
+        let baseNode = SKNode()
+        baseNode.speed = 1.0
+        self.setupBackground(baseNode: baseNode)
+        self.addChild(baseNode)
+    }
+}
+</code></pre>
+
+              </ul>
             </div>
           </div>
         </div>
