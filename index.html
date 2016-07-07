@@ -45,7 +45,9 @@
               <ul class="guidance">
                 <li>sksファイル(Actions.sks, GameScene.sks)を削除する。</li>
                 <li>GameScene.swift : GameSceneの中身を空にする。<pre><code class="lang-swift">class GameScene: SKScene {
-
+    /// Sceneが表示された際に実行される
+    override func didMove(to view: SKView) {
+    }
 }
 </code></pre>
 
@@ -83,7 +85,25 @@
             <div class="step-header">
               <div class="step-num"><i class="fa fa-plus-square"></i> Step3: 文字を表示する</div>
             </div>
-            <div class="play-code"><pre><code class="lang-swift">class GameScene: SKScene {
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">SKLabelNodeを使って文字を表示できる</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>SKLabelNodeを使って文字列「Hello, SpriteKit」を表示する。</span></div>
+                  <ul class="ml20">
+                    <li>フォント名 Chalkduster</li>
+                    <li>文字サイズ 30</li>
+                    <li>文字色 green</li>
+                    <li>文字の位置 画面の中心</li>
+                  </ul>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">解答例</button>
+              <div class="answer hidden"><pre><code class="lang-swift">class GameScene: SKScene {
     /// Sceneが表示された際に実行される
     override func didMove(to view: SKView) {
         // ラベルのフォントを指定しインスタンスを生成する
@@ -106,6 +126,7 @@
 }
 </code></pre>
 
+              </div>
             </div>
           </div>
         </div>
@@ -115,8 +136,24 @@
               <div class="step-num"><i class="fa fa-plus-square"></i> Step4: 画像を表示する</div>
             </div>
             <div class="play-code">
-              <ul class="guidance">
-                <li>Assets.xcassetsに画像ファイル(person.png)をドラッグアンドドロップする。</li><img src="images/step4_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">SKSpriteNode、SKTextureを使って画像を表示できる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>画像を表示変更する。</span></div>
+                  <ol class="ml20">
+                    <li>SKSpriteNodeを使って画像を表示する。</li>
+                    <li>SKTextureを使って画像を変更する。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">解答例</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>Assets.xcassetsに画像ファイル(person.png)をドラッグアンドドロップする。</li><img src="images/step4_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
     /// Sceneが表示された際に実行される
     override func didMove(to view: SKView) {
         // スプライトを作成
@@ -133,7 +170,7 @@
 }
 </code></pre>
 
-                <li>Assets.xcassetsに画像ファイル(airplane.png)をドラッグアンドドロップする。</li><img src="images/step4_xcode_02.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
+                  <li>Assets.xcassetsに画像ファイル(airplane.png)をドラッグアンドドロップする。</li><img src="images/step4_xcode_02.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
     /// Sceneが表示された際に実行される
     override func didMove(to view: SKView) {
         // スプライトを作成
@@ -158,7 +195,8 @@
 }
 </code></pre>
 
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -168,29 +206,37 @@
               <div class="step-num"><i class="fa fa-plus-square"></i> Step5: アニメーション</div>
             </div>
             <div class="play-code">
-              <ul class="guidance">
-                <li>Assets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。</li><img src="images/step5_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">SKActionを使ってのアニメーションができる</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>SKActionを使って対象物にアニメーションを付ける</span></div>
+                  <ol class="ml20">
+                    <li>SKSpriteNodeを使用しアニメーションの対象物を作成する</li>
+                    <li>SKActionを使用しアニメーションを作成する</li>
+                    <li>作成したアニメーションを対象物に設定する</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">解答例</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>Assets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。</li><img src="images/step5_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
     /// 背景画像を設定する
     func setupBackground(baseNode: SKNode) {
         // 背景画像からテクスチャを作成
         let texture = SKTexture(imageNamed: &quot;background&quot;)
         // フィルタリングモード（テクスチャの本来のサイズ以外で描画される場合に使用される）
-        // .Linear クォリティー高い
-        // .Nearest クォリティー低い
+        // .linear クォリティー高い
+        // .nearest クォリティー低い
         texture.filteringMode = .nearest
 
         // 必要な画像枚数を算出
-        let needHeightNumber = ceil(2.0 + (self.frame.size.height / texture.size().height))
-        let needWidthNumber = ceil(self.frame.size.width / texture.size().width)
-
-        print(&quot;frame height:\(self.frame.size.height)&quot;)
-        print(&quot;frame width:\(self.frame.size.width)&quot;)
-
-        print(&quot;texture height:\(texture.size().height)&quot;)
-        print(&quot;texture width:\(texture.size().width)&quot;)
-
-        print(&quot;needHeightNumber:\(needHeightNumber)&quot;)
-        print(&quot;needWidthNumber:\(needWidthNumber)&quot;)
+        let needHeightNumber: CGFloat = ceil(self.frame.size.height / texture.size().height)
+        let needWidthNumber: CGFloat = ceil(self.frame.size.width / texture.size().width)
 
         // アニメーションを作成
         let moveAnim = SKAction.moveBy(x: 0.0, y: -texture.size().height, duration: TimeInterval(texture.size().height / 10.0))
@@ -198,25 +244,28 @@
         let repeatForeverAnim = SKAction.repeatForever(SKAction.sequence([moveAnim, resetAnim]))
 
         // 画像の配置とアニメーションを設定
-        for j in 0 ..&lt; Int(needHeightNumber) {
-            let sprite = SKSpriteNode(texture: texture)
-            sprite.zPosition = -100.0
-            sprite.position = CGPoint(x:self.frame.midX, y: CGFloat(j)*sprite.size.height)
-            sprite.run(repeatForeverAnim)
-            baseNode.addChild(sprite)
+        for i in 0 ... Int(needWidthNumber) {
+            for j in 0 ... Int(needHeightNumber) {
+                let sprite = SKSpriteNode(texture: texture)
+                sprite.zPosition = -100
+                sprite.position = CGPoint(x: CGFloat(i) * sprite.size.width, y: CGFloat(j) * sprite.size.height)
+                sprite.speed = 20
+                sprite.run(repeatForeverAnim)
+                baseNode.addChild(sprite)
+            }
         }
     }
     /// Sceneが表示された際に実行される
     override func didMove(to view: SKView) {
         let baseNode = SKNode()
-        baseNode.speed = 1.0
         self.setupBackground(baseNode: baseNode)
         self.addChild(baseNode)
     }
 }
 </code></pre>
 
-              </ul>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
