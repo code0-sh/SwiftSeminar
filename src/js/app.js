@@ -14,9 +14,10 @@ React.render(<HelloReact name="" />, document.getElementById("react"));
  * codeのfadeIn, fadeOut
  */
 var playground = document.querySelector(".playground");
+var answerBtns = document.querySelectorAll(".answerBtn");
 
 playground.addEventListener("click", function(ev){
-	let target = ev.target
+	let target = ev.target;
 	if (target.classList.contains('step-num')){
 		let elitem = target.parentElement.nextSibling.nextSibling;
 		let elmark = target.childNodes[0];
@@ -32,3 +33,16 @@ playground.addEventListener("click", function(ev){
 		}
 	}
 });
+
+for (var i = 0; i < answerBtns.length; i++) {
+	answerBtns[i].addEventListener("click", function(ev){
+		let target = ev.target.nextSibling.nextSibling;
+		if (target.classList.contains("hidden")) {
+			target.classList.remove("hidden");
+		} else {
+			target.classList.add("hidden");
+		}
+	})
+};
+
+

@@ -64,33 +64,84 @@ html
                     .step-header
                         .step-num <i class="fa fa-plus-square"></i> Step3: 文字を表示する
                     .play-code
-                        include:markdown ../md/Step3/1.md
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents SKLabelNodeを使って文字を表示できる
+
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span SKLabelNodeを使って文字列「Hello, SpriteKit」を表示する。
+                                ul.ml20
+                                    li フォント名 Chalkduster
+                                    li 文字サイズ 30
+                                    li 文字色 green
+                                    li 文字の位置 画面の中心
+
+                        button.answerBtn.mb10 解答例
+
+                        .answer.hidden
+                            include:markdown ../md/Step3/1.md
 
             .play-list
                 .play-list-item
                     .step-header
                         .step-num <i class="fa fa-plus-square"></i> Step4: 画像を表示する
                     .play-code
-                        ul.guidance
-                            li Assets.xcassetsに画像ファイル(person.png)をドラッグアンドドロップする。
-                            img(src="images/step4_xcode_01.png", width="50%")
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents SKSpriteNode、SKTextureを使って画像を表示できる。
 
-                            include:markdown ../md/Step4/1.md
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span 画像を表示変更する。
+                                ol.ml20
+                                    li SKSpriteNodeを使って画像を表示する。
+                                    li SKTextureを使って画像を変更する。
 
-                            li Assets.xcassetsに画像ファイル(airplane.png)をドラッグアンドドロップする。
-                            img(src="images/step4_xcode_02.png", width="50%")
+                        button.answerBtn.mb10 解答例
 
-                            include:markdown ../md/Step4/2.md
+                        .answer.hidden
+                            ul.guidance
+                                li Assets.xcassetsに画像ファイル(person.png)をドラッグアンドドロップする。
+                                img(src="images/step4_xcode_01.png", width="50%")
+
+                                include:markdown ../md/Step4/1.md
+
+                                li Assets.xcassetsに画像ファイル(airplane.png)をドラッグアンドドロップする。
+                                img(src="images/step4_xcode_02.png", width="50%")
+
+                                include:markdown ../md/Step4/2.md
 
             .play-list
                 .play-list-item
                     .step-header
                         .step-num <i class="fa fa-plus-square"></i> Step5: アニメーション
                     .play-code
-                        ul.guidance
-                            li Assets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。
-                            img(src="images/step5_xcode_01.png", width="50%")
-                            include:markdown ../md/Step5/1.md
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents SKActionを使ってのアニメーションができる
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span SKActionを使って対象物にアニメーションを付ける
+                                ol.ml20
+                                    li SKSpriteNodeを使用しアニメーションの対象物を作成する
+                                    li SKActionを使用しアニメーションを作成する
+                                    li 作成したアニメーションを対象物に設定する
+
+                        button.answerBtn.mb10 解答例
+
+                        .answer.hidden
+
+                            ul.guidance
+                                li Assets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。
+                                img(src="images/step5_xcode_01.png", width="50%")
+                                include:markdown ../md/Step5/1.md
 
             .play-list
                 .play-list-item

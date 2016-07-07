@@ -64,6 +64,7 @@
 	 * codeのfadeIn, fadeOut
 	 */
 	var playground = document.querySelector(".playground");
+	var answerBtns = document.querySelectorAll(".answerBtn");
 
 	playground.addEventListener("click", function (ev) {
 		var target = ev.target;
@@ -82,6 +83,17 @@
 			}
 		}
 	});
+
+	for (var i = 0; i < answerBtns.length; i++) {
+		answerBtns[i].addEventListener("click", function (ev) {
+			var target = ev.target.nextSibling.nextSibling;
+			if (target.classList.contains("hidden")) {
+				target.classList.remove("hidden");
+			} else {
+				target.classList.add("hidden");
+			}
+		});
+	};
 
 /***/ }
 /******/ ]);
