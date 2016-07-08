@@ -88,7 +88,7 @@
             <div class="play-code">
               <dl class="learn">
                 <dt class="learn-title">習得事項</dt>
-                <dd class="learn-contents">SKLabelNodeを使って文字を表示できる</dd>
+                <dd class="learn-contents">SKLabelNodeを使って文字を表示できる。</dd>
               </dl>
               <dl class="subject mb10">
                 <dt class="subject-title">課題</dt>
@@ -208,23 +208,26 @@
             <div class="play-code">
               <dl class="learn">
                 <dt class="learn-title">習得事項</dt>
-                <dd class="learn-contents">SKActionを使ってのアニメーションができる</dd>
+                <dd class="learn-contents">SKActionを使ったアニメーションができる。</dd>
               </dl>
               <dl class="subject mb10">
                 <dt class="subject-title">課題</dt>
-                <dd class="subject-contents">
-                  <div class="mb10"><span>SKActionを使って対象物にアニメーションを付ける</span></div>
+                <dd class="subject-contents mb10">
+                  <div class="mb10"><span>SKActionを使って対象物にアニメーションを付ける。</span></div>
                   <ol class="ml20">
-                    <li>SKSpriteNodeを使用しアニメーションの対象物を作成する</li>
-                    <li>SKActionを使用しアニメーションを作成する</li>
-                    <li>作成したアニメーションを対象物に設定する</li>
+                    <li>SKSpriteNodeを使用しアニメーションの対象物を生成する。</li>
+                    <li>対象物を配置する。</li>
+                    <li>SKActionを使用しアニメーションを作成する。</li>
+                    <li>作成したアニメーションを対象物に設定する。</li>
                   </ol>
                 </dd>
+                <dt class="subject-title">補足事項</dt>
+                <dd class="subject-contents">対象物はbackground.pngを使用するためAssets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。<img src="images/step5_xcode_01.png" width="50%"></dd>
               </dl>
               <button class="answerBtn mb10">解答例</button>
               <div class="answer hidden">
                 <ul class="guidance">
-                  <li>Assets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。</li><img src="images/step5_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
+                  <li><pre><code class="lang-swift">class GameScene: SKScene {
     /// 背景画像を設定する
     func setupBackground(baseNode: SKNode) {
         // 背景画像からテクスチャを作成
@@ -264,6 +267,7 @@
 }
 </code></pre>
 
+                  </li>
                 </ul>
               </div>
             </div>
@@ -272,82 +276,132 @@
         <div class="play-list">
           <div class="play-list-item">
             <div class="step-header">
-              <div class="step-num"><i class="fa fa-plus-square"></i> Step6: 重力と衝突</div>
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step6: 物理空間の生成と衝突</div>
             </div>
             <div class="play-code">
-              <ul class="guidance">
-                <li>Assets.xcassetsに画像ファイル(enemy.png)をドラッグアンドドロップする。</li><img src="images/step6_xcode_01.png" width="50%"><pre><code class="lang-swift">class GameScene: SKScene {
-    // 衝突判定用のビット値
-    struct ColliderType {
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">physicsWorld、SKPhysicsBodyを使って物理空間を生成し、衝突イベントを設定できる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents mb10">
+                  <div class="mb10"><span>physicsWorld、physicsBody、SKPhysicsBodyを使って物理空間を生成し、他物体との衝突イベントを生じさせる。衝突時に一方を消す。</span></div>
+                  <ol class="ml20">
+                    <li>SKSpriteNodeを使用し対象物を生成する。</li>
+                    <li>対象物をランダムに配置する。</li>
+                    <li>physicsWorld、physicsBody、SKPhysicsBodyを使って物理空間を生成する。</li>
+                    <li>衝突イベントを設定する。</li>
+                  </ol>
+                </dd>
+                <dt class="subject-title">補足事項</dt>
+                <dd class="subject-contents">対象物はenemy.pngを使用するためAssets.xcassetsに画像ファイル(enemy.png)をドラッグアンドドロップする。<img src="images/step6_xcode_01.png" width="50%"></dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>衝突判定用のビット値の定義<pre><code class="lang-swift">    struct ColliderType {
         static let Enemy: UInt32 = (1 &lt;&lt; 0)
         static let World: UInt32 = (1 &lt;&lt; 1)
     }
+</code></pre>
 
-    func setupEnemy(baseNode: SKNode) {
-        // エネミー画像からテクスチャを作成
+                  </li>
+                  <li>対象物の生成と配置<pre><code class="lang-swift">        let radius: CGFloat = 10 // エネミー画像の半径
         let texture = SKTexture(imageNamed: &quot;enemy&quot;)
-        // フィルタリングモード（テクスチャの本来のサイズ以外で描画される場合に使用される）
-        // .Linear クォリティー高い
-        // .Nearest クォリティー低
-        texture.filteringMode = .nearest
+        let enemy = SKSpriteNode(texture: texture)
+        enemy.size = CGSize(width: radius * 2, height: radius * 2)
+        let randIntX = radius + (CGFloat)(arc4random_uniform((UInt32)(self.frame.width - radius * 2)))
+        let randIntY = radius + (CGFloat)(arc4random_uniform((UInt32)(self.frame.height - radius * 2)))
+        enemy.position = CGPoint(x:randIntX, y:randIntY)
+</code></pre>
 
-        // エネミー画像の半径
-        let radius: CGFloat = 10
-
-        for _ in 0..&lt;10 {
-            let sprite = SKSpriteNode(texture: texture)
-            sprite.size = CGSize(width: radius*2, height: radius*2)
-            let randIntX = radius + (CGFloat)(arc4random_uniform((UInt32)(self.frame.width - radius * 2)))
-            let randIntY = radius + (CGFloat)(arc4random_uniform((UInt32)(self.frame.height - radius * 2)))
-            sprite.position = CGPoint(x:randIntX, y:randIntY)
-
-            // 重力
-            sprite.physicsBody = SKPhysicsBody(circleOfRadius: radius)
-            sprite.physicsBody?.restitution = 1.0 // 反発係数
-            sprite.physicsBody?.linearDamping = 0.0 // 空気抵抗
-            sprite.physicsBody?.mass = 1.0 // 質量
-            sprite.physicsBody?.friction = 0.0 // 摩擦
-
-            // 物体種別
-            sprite.physicsBody?.categoryBitMask = ColliderType.Enemy
-            // どの物体と接触した場合に衝突させるか
-            sprite.physicsBody?.collisionBitMask = ColliderType.Enemy | ColliderType.World
-            // どの物体と接触した場合にイベントを発生させるか
-            sprite.physicsBody?.contactTestBitMask = ColliderType.Enemy
-
-            baseNode.addChild(sprite)
-        }
-    }
-    // 接触した時のイベント
-    func didBegin(_ contact: SKPhysicsContact) {
-        contact.bodyA.node?.removeFromParent()
-    }
-
-    /// Sceneが表示された際に実行される
-    override func didMove(to view: SKView) {
-        let baseNode = SKNode()
-        self.setupEnemy(baseNode: baseNode)
-
-        // 重力
-        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.5)
-        self.physicsWorld.contactDelegate = self
+                  </li>
+                  <li>Sceneの物理設定<pre><code class="lang-swift">        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -0.5) // 重力
+        self.physicsWorld.contactDelegate = self // 衝突デリゲート
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
         self.physicsBody?.restitution = 1.0 // 反発係数
         self.physicsBody?.linearDamping = 0.0 // 空気抵抗
         self.physicsBody?.friction = 0.0 // 摩擦
-        self.name = &quot;frame&quot;
-
-        // 物体種別
-        self.physicsBody?.categoryBitMask = ColliderType.World
-        // どの物体と接触した場合に衝突させるか
-        self.physicsBody?.collisionBitMask = ColliderType.Enemy
-
-        self.addChild(baseNode)
-    }
-}
+        self.physicsBody?.categoryBitMask = ColliderType.World // 物体種別
+        self.physicsBody?.collisionBitMask = ColliderType.Enemy // どの物体と接触した場合に衝突させるか
 </code></pre>
 
-              </ul>
+                  </li>
+                  <li>対象物の物理設定<pre><code class="lang-swift">            enemy.physicsBody = SKPhysicsBody(circleOfRadius: radius)
+            enemy.physicsBody?.restitution = 1.0 // 反発係数
+            enemy.physicsBody?.linearDamping = 0.0 // 空気抵抗
+            enemy.physicsBody?.mass = 1.0 // 質量
+            enemy.physicsBody?.friction = 0.0 // 摩擦
+            enemy.physicsBody?.categoryBitMask = ColliderType.Enemy // 物体種別
+            enemy.physicsBody?.collisionBitMask = ColliderType.Enemy | ColliderType.World // どの物体と接触した場合に衝突させるか
+            enemy.physicsBody?.contactTestBitMask = ColliderType.Enemy // どの物体と接触した場合にイベントを発生させるか
+</code></pre>
+
+                  </li>
+                  <li>衝突時のイベント<pre><code class="lang-swift">    func didBegin(_ contact: SKPhysicsContact) {
+        contact.bodyA.node?.removeFromParent() // 衝突した一方を削除する
+    }
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step7: タップ</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">タップイベントを設定できる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>タップすると飛行機がタップ位置に移動する。ダブルタップの場合移動後に弾丸を発射する。</span></div>
+                  <ol class="ml20">
+                    <li>SKSpriteNodeを使用し飛行機を生成し配置する。</li>
+                    <li>タップ開始イベントを設定する。</li>
+                    <li>タップ終了イベントを設定する。</li>
+                    <li>SKShapeNodeを使用し弾丸をタップ位置に生成し、アニメーションを設定する。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>タップ開始イベント<pre><code class="lang-swift">    override func touchesBegan(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            //
+        }
+    }
+</code></pre>
+
+                  </li>
+                  <li>タップイベント<pre><code class="lang-swift">    override func touchesEnded(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let tapCount = touch.tapCount
+            //
+        }
+    }
+</code></pre>
+
+                  </li>
+                  <li>SKShapeNodeを使用した弾丸の生成<pre><code class="lang-swift">        let shell = SKShapeNode(circleOfRadius: 5)
+        shell.position = CGPoint(x: location.x, y: 110)
+        shell.fillColor = SKColor.red()
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
