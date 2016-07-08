@@ -225,13 +225,17 @@ html
                             dd.learn-contents パーティクルと効果音を設定できる。
                         dl.subject.mb10
                             dt.subject-title 課題
-                            dd.subject-contents
+                            dd.subject-contents.mb10
                                 .mb10
                                     span タップすると星のパーティクルが発生し、効果音が鳴る。パーティクルは一定時間経つと消える。
                                 ol.ml20
                                     li SKEmitterNodeを使用し星のパーティクルを生成する。
                                     li SKActionを設定し効果音をつける。
                                     li タップ開始イベントで1,2を実行する。
+
+                            dt.subject-title 補足事項
+                            dd.subject-contents 星(star.png)と効果音(sound_explosion.mp3)を使用するためAssets.xcassetsに対象ファイルをドラッグアンドドロップする。
+                                img(src="images/step8_xcode_01.png", width="50%")
 
                         button.answerBtn.mb10 ヒント
 
@@ -241,6 +245,41 @@ html
                                     include:markdown ../md/Step8/1.md
                                 li 効果音再生
                                     include:markdown ../md/Step8/2.md
+
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step9: 加速度センサー
+                    .play-code
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents 加速度センサーを使用できる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span 端末を傾けると飛行機が横(X軸方向)に移動する。
+                                ol.ml20
+                                    li SKSpriteNodeを使用して飛行機を生成する。
+                                    li Sceneと飛行機に物理空間を設定する。
+                                    li 加速度データを使用して飛行機のx方向の移動距離を算出する。
+                                    li 1フレームごとに3から飛行機の位置を更新する。
+
+                        button.answerBtn.mb10 ヒント
+
+                        .answer.hidden
+                            ul.guidance
+                                li 衝突判定用のビット値の定義
+                                    include:markdown ../md/Step9/1.md
+                                li 飛行機の物理空間の設定
+                                    include:markdown ../md/Step9/2.md
+                                li Sceneの物理空間の設定
+                                    include:markdown ../md/Step9/3.md
+                                li 1フレーム毎に呼ばれるメソッド
+                                    include:markdown ../md/Step9/4.md
+                                li 加速度データの使用
+                                    include:markdown ../md/Step9/5.md
+
 
     #react
 
