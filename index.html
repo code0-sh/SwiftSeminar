@@ -281,7 +281,7 @@
             <div class="play-code">
               <dl class="learn">
                 <dt class="learn-title">習得事項</dt>
-                <dd class="learn-contents">physicsWorld、SKPhysicsBodyを使って物理空間を生成し、衝突イベントを設定できる。</dd>
+                <dd class="learn-contents">physicsWorld、physicsBody、SKPhysicsBodyを使って物理空間を生成し、衝突イベントを設定できる。</dd>
               </dl>
               <dl class="subject mb10">
                 <dt class="subject-title">課題</dt>
@@ -512,6 +512,52 @@
         //
     }
     motionManager.startAccelerometerUpdates(to: OperationQueue.current()!, withHandler: accelerometerHandler) // 加速度センサーを使用開始
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step10: シーン間の遷移</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">シーン間の遷移ができるようになる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>3つのシーン(HomeScene、GameScene、ResultScene)を生成して遷移させる。</span></div>
+                  <ol class="ml20">
+                    <li>3つのシーンを生成する。</li>
+                    <li>遷移イベントのトリガー(タッチ開始イベント)を生成する。</li>
+                    <li>遷移元から遷移先にuserDataを使用しデータを渡す。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>シーンへの遷移とアニメーション設定<pre><code class="lang-swift">        // GameSceneへの遷移
+        let transition = SKTransition.doorway(withDuration: 1)
+        let newScene = GameScene()
+        newScene.size = self.frame.size
+        view?.presentScene(newScene, transition: transition)
+</code></pre>
+
+                  </li>
+                  <li>userDataの使用方<pre><code class="lang-swift">        // 遷移元
+        scene.userData = NSMutableDictionary()
+        scene.userData?.setObject(score, forKey: &quot;score&quot;)
+
+        // 遷移先
+        self.scene?.userData?[&quot;score&quot;]
 </code></pre>
 
                   </li>
