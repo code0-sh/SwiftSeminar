@@ -417,7 +417,7 @@
               </dl>
               <dl class="subject mb10">
                 <dt class="subject-title">課題</dt>
-                <dd class="subject-contents">
+                <dd class="subject-contents mb10">
                   <div class="mb10"><span>タップすると星のパーティクルが発生し、効果音が鳴る。パーティクルは一定時間経つと消える。</span></div>
                   <ol class="ml20">
                     <li>SKEmitterNodeを使用し星のパーティクルを生成する。</li>
@@ -425,6 +425,8 @@
                     <li>タップ開始イベントで1,2を実行する。</li>
                   </ol>
                 </dd>
+                <dt class="subject-title">補足事項</dt>
+                <dd class="subject-contents">星(star.png)と効果音(sound_explosion.mp3)を使用するためAssets.xcassetsに対象ファイルをドラッグアンドドロップする。<img src="images/step8_xcode_01.png" width="50%"></dd>
               </dl>
               <button class="answerBtn mb10">ヒント</button>
               <div class="answer hidden">
@@ -436,6 +438,80 @@
 
                   </li>
                   <li>効果音再生<pre><code class="lang-swift">    let sound = SKAction.playSoundFileNamed(&quot;sound_explosion.mp3&quot;, waitForCompletion: false)
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step9: 加速度センサー</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">加速度センサーを使用できる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>端末を傾けると飛行機が横(X軸方向)に移動する。</span></div>
+                  <ol class="ml20">
+                    <li>SKSpriteNodeを使用して飛行機を生成する。</li>
+                    <li>Sceneと飛行機に物理空間を設定する。</li>
+                    <li>加速度データを使用して飛行機のx方向の移動距離を算出する。</li>
+                    <li>1フレームごとに3から飛行機の位置を更新する。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>衝突判定用のビット値の定義<pre><code class="lang-swift">    struct ColliderType {
+        static let Ship: UInt32 = (1 &lt;&lt; 0)
+        static let World: UInt32 = (1 &lt;&lt; 1)
+    }
+</code></pre>
+
+                  </li>
+                  <li>飛行機の物理空間の設定<pre><code class="lang-swift">        ship.physicsBody = SKPhysicsBody(rectangleOf: ship.size)
+        ship.physicsBody?.affectedByGravity = false // 飛行機に重力を効かせない
+        ship.physicsBody?.categoryBitMask = ColliderType.Ship // 物体種別
+        ship.physicsBody?.collisionBitMask = ColliderType.World // どの物体と接触した場合に衝突させるか
+</code></pre>
+
+                  </li>
+                  <li>Sceneの物理空間の設定<pre><code class="lang-swift">        self.physicsBody = SKPhysicsBody(edgeLoopFrom: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        self.physicsBody?.categoryBitMask = ColliderType.World // 物体種別
+        self.physicsBody?.collisionBitMask = ColliderType.Ship // どの物体と接触した場合に衝突させるか
+</code></pre>
+
+                  </li>
+                  <li>1フレーム毎に呼ばれるメソッド<pre><code class="lang-swift">    override func update(_ currentTime: TimeInterval) {
+        //
+    }
+</code></pre>
+
+                  </li>
+                  <li>加速度データの使用<pre><code class="lang-swift">    // 加速度を取得するためにはCoreMotionをインポートする
+    import CoreMotion
+
+    // 使用例
+    motionManager = CMMotionManager()
+    motionManager.accelerometerUpdateInterval = 0.1 // 取得間隔
+    let accelerometerHandler: CMAccelerometerHandler = {
+        (data: CMAccelerometerData?, error: NSError?) -&gt; Void in
+        guard let data = data else {
+            return
+        }
+        print(&quot;x:\(data.acceleration.x) y:\(data.acceleration.y)&quot;)
+        //
+    }
+    motionManager.startAccelerometerUpdates(to: OperationQueue.current()!, withHandler: accelerometerHandler) // 加速度センサーを使用開始
 </code></pre>
 
                   </li>
