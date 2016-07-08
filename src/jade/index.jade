@@ -66,7 +66,7 @@ html
                     .play-code
                         dl.learn
                             dt.learn-title 習得事項
-                            dd.learn-contents SKLabelNodeを使って文字を表示できる
+                            dd.learn-contents SKLabelNodeを使って文字を表示できる。
 
                         dl.subject.mb10
                             dt.subject-title 課題
@@ -123,35 +123,97 @@ html
                     .play-code
                         dl.learn
                             dt.learn-title 習得事項
-                            dd.learn-contents SKActionを使ってのアニメーションができる
+                            dd.learn-contents SKActionを使ったアニメーションができる。
                         dl.subject.mb10
                             dt.subject-title 課題
-                            dd.subject-contents
+                            dd.subject-contents.mb10
                                 .mb10
-                                    span SKActionを使って対象物にアニメーションを付ける
+                                    span SKActionを使って対象物にアニメーションを付ける。
                                 ol.ml20
-                                    li SKSpriteNodeを使用しアニメーションの対象物を作成する
-                                    li SKActionを使用しアニメーションを作成する
-                                    li 作成したアニメーションを対象物に設定する
+                                    li SKSpriteNodeを使用しアニメーションの対象物を生成する。
+                                    li 対象物を配置する。
+                                    li SKActionを使用しアニメーションを作成する。
+                                    li 作成したアニメーションを対象物に設定する。
+
+                            dt.subject-title 補足事項
+                            dd.subject-contents 対象物はbackground.pngを使用するためAssets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。
+                                img(src="images/step5_xcode_01.png", width="50%")
 
                         button.answerBtn.mb10 解答例
 
                         .answer.hidden
 
                             ul.guidance
-                                li Assets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。
-                                img(src="images/step5_xcode_01.png", width="50%")
-                                include:markdown ../md/Step5/1.md
+                                li
+                                    include:markdown ../md/Step5/1.md
 
             .play-list
                 .play-list-item
                     .step-header
-                        .step-num <i class="fa fa-plus-square"></i> Step6: 重力と衝突
+                        .step-num <i class="fa fa-plus-square"></i> Step6: 物理空間の生成と衝突
                     .play-code
-                        ul.guidance
-                            li Assets.xcassetsに画像ファイル(enemy.png)をドラッグアンドドロップする。
-                            img(src="images/step6_xcode_01.png", width="50%")
-                            include:markdown ../md/Step6/1.md
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents physicsWorld、SKPhysicsBodyを使って物理空間を生成し、衝突イベントを設定できる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents.mb10
+                                .mb10
+                                    span physicsWorld、physicsBody、SKPhysicsBodyを使って物理空間を生成し、他物体との衝突イベントを生じさせる。衝突時に一方を消す。
+                                ol.ml20
+                                    li SKSpriteNodeを使用し対象物を生成する。
+                                    li 対象物をランダムに配置する。
+                                    li physicsWorld、physicsBody、SKPhysicsBodyを使って物理空間を生成する。
+                                    li 衝突イベントを設定する。
+
+                            dt.subject-title 補足事項
+                            dd.subject-contents 対象物はenemy.pngを使用するためAssets.xcassetsに画像ファイル(enemy.png)をドラッグアンドドロップする。
+                                img(src="images/step6_xcode_01.png", width="50%")
+
+                        button.answerBtn.mb10 ヒント
+
+                        .answer.hidden
+                            ul.guidance
+                                li 衝突判定用のビット値の定義
+                                    include:markdown ../md/Step6/1.md
+                                li 対象物の生成と配置
+                                    include:markdown ../md/Step6/2.md
+                                li Sceneの物理設定
+                                    include:markdown ../md/Step6/3.md
+                                li 対象物の物理設定
+                                    include:markdown ../md/Step6/4.md
+                                li 衝突時のイベント
+                                    include:markdown ../md/Step6/5.md
+
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step7: タップ
+                    .play-code
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents タップイベントを設定できる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span タップすると飛行機がタップ位置に移動する。ダブルタップの場合移動後に弾丸を発射する。
+                                ol.ml20
+                                    li SKSpriteNodeを使用し飛行機を生成し配置する。
+                                    li タップ開始イベントを設定する。
+                                    li タップ終了イベントを設定する。
+                                    li SKShapeNodeを使用し弾丸をタップ位置に生成し、アニメーションを設定する。
+
+                        button.answerBtn.mb10 ヒント
+
+                        .answer.hidden
+                            ul.guidance
+                                li タップ開始イベント
+                                    include:markdown ../md/Step7/1.md
+                                li タップイベント
+                                    include:markdown ../md/Step7/2.md
+                                li SKShapeNodeを使用した弾丸の生成
+                                    include:markdown ../md/Step7/3.md
 
     #react
 
