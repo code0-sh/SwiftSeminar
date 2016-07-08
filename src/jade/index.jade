@@ -215,6 +215,33 @@ html
                                 li SKShapeNodeを使用した弾丸の生成
                                     include:markdown ../md/Step7/3.md
 
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step8: パーティクルと効果音
+                    .play-code
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents パーティクルと効果音を設定できる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span タップすると星のパーティクルが発生し、効果音が鳴る。パーティクルは一定時間経つと消える。
+                                ol.ml20
+                                    li SKEmitterNodeを使用し星のパーティクルを生成する。
+                                    li SKActionを設定し効果音をつける。
+                                    li タップ開始イベントで1,2を実行する。
+
+                        button.answerBtn.mb10 ヒント
+
+                        .answer.hidden
+                            ul.guidance
+                                li パーティクル生成
+                                    include:markdown ../md/Step8/1.md
+                                li 効果音再生
+                                    include:markdown ../md/Step8/2.md
+
     #react
 
 

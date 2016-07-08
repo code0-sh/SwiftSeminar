@@ -405,6 +405,45 @@
             </div>
           </div>
         </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step8: パーティクルと効果音</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">パーティクルと効果音を設定できる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>タップすると星のパーティクルが発生し、効果音が鳴る。パーティクルは一定時間経つと消える。</span></div>
+                  <ol class="ml20">
+                    <li>SKEmitterNodeを使用し星のパーティクルを生成する。</li>
+                    <li>SKActionを設定し効果音をつける。</li>
+                    <li>タップ開始イベントで1,2を実行する。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>パーティクル生成<pre><code class="lang-swift">        let particle = SKEmitterNode(fileNamed: &quot;ConflictParticle.sks&quot;)
+        particle?.position = CGPoint(x: location.x, y: location.y)
+        self.addChild(particle!)
+</code></pre>
+
+                  </li>
+                  <li>効果音再生<pre><code class="lang-swift">    let sound = SKAction.playSoundFileNamed(&quot;sound_explosion.mp3&quot;, waitForCompletion: false)
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
     <div id="react"></div>
