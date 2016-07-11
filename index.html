@@ -552,12 +552,108 @@
 </code></pre>
 
                   </li>
-                  <li>userDataの使用方<pre><code class="lang-swift">        // 遷移元
+                  <li>userDataの使い方<pre><code class="lang-swift">        // 遷移元
         scene.userData = NSMutableDictionary()
         scene.userData?.setObject(score, forKey: &quot;score&quot;)
 
         // 遷移先
         self.scene?.userData?[&quot;score&quot;]
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step11: シューティングゲーム</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">Step1〜10までの機能を組み合わせたプログラム作成ができる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>シューティングゲームを作成する。</span></div>
+                  <ol class="ml20">
+                    <li>3つのシーン(HomeScene,GameScene,ResultScene)を生成する。</li>
+                    <li>HomeScene
+                      <ul>
+                        <li>Startラベルを配置する。</li>
+                        <li>StartラベルをタップするとGameSceneに遷移する。</li>
+                      </ul>
+                    </li>
+                    <li>GameScene
+                      <ul>
+                        <li>背景画像を設定する。</li>
+                        <li>飛行機を設定する。</li>
+                        <li>エネミーを設定する。</li>
+                        <li>弾丸を設定する。</li>
+                        <li>パーティクルを設定する。</li>
+                        <li>飛行機のステータスを設定する。</li>
+                        <li>弾丸のステータスを設定する。</li>
+                        <li>スコアを設定する。</li>
+                        <li>接触時のイベントを設定する。</li>
+                        <li>タップ開始イベントを設定する。</li>
+                        <li>ResultSceneのuserDataにスコアを保存する。</li>
+                      </ul>
+                    </li>
+                    <li>ResultScene
+                      <ul>
+                        <li>ゲームオーバー、スコア、再スタートラベルを配置する。</li>
+                        <li>再スタートラベルタッチするとGameSceneに遷移する。</li>
+                      </ul>
+                    </li>
+                  </ol>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step12: データ保存</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">UserDefaultsを使用したデータ保存ができる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>タップした回数を保存、参照、削除する。</span></div>
+                  <ol class="ml20">
+                    <li>表示数値、数値Up、End、Save, Clearラベルを配置する。</li>
+                    <li>数値Upラベルをタップすると表示数値が+1(インクリメント)される。</li>
+                    <li>Endラベルをタップすると再度GameSceneを表示する。</li>
+                    <li>Saveラベルをタップすると表示数値を保存する。</li>
+                    <li>Clearラベルをタップすると保存されている表示数値を削除する。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>UserDefaultsの使い方<pre><code class="lang-swift">    // NSUserDefaultsの取得
+    let defaults: UserDefaults = UserDefaults.standard()
+
+    var score: Int = 0
+
+    // スコアをUserDefaultsに保存
+    defaults.set(self.score, forKey: &quot;Score&quot;)
+
+    // スコアをUserDefaultsから読み取る
+    score = defaults.integer(forKey: &quot;Score&quot;)
+
+    // スコアをUserDefaultsから削除
+    defaults.removeObject(forKey: &quot;Score&quot;)
 </code></pre>
 
                   </li>

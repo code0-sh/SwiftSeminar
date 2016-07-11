@@ -304,9 +304,73 @@ html
                             ul.guidance
                                 li シーンへの遷移とアニメーション設定
                                     include:markdown ../md/Step10/1.md
-                                li userDataの使用方
+                                li userDataの使い方
                                     include:markdown ../md/Step10/2.md
 
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step11: シューティングゲーム
+                    .play-code
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents Step1〜10までの機能を組み合わせたプログラム作成ができる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span シューティングゲームを作成する。
+                                ol.ml20
+                                    li 3つのシーン(HomeScene,GameScene,ResultScene)を生成する。
+                                    li HomeScene
+                                        ul
+                                            li Startラベルを配置する。
+                                            li StartラベルをタップするとGameSceneに遷移する。
+                                    li GameScene
+                                        ul
+                                            li 背景画像を設定する。
+                                            li 飛行機を設定する。
+                                            li エネミーを設定する。
+                                            li 弾丸を設定する。
+                                            li パーティクルを設定する。
+                                            li 飛行機のステータスを設定する。
+                                            li 弾丸のステータスを設定する。
+                                            li スコアを設定する。
+                                            li 接触時のイベントを設定する。
+                                            li タップ開始イベントを設定する。
+                                            li ResultSceneのuserDataにスコアを保存する。
+
+                                    li ResultScene
+                                        ul
+                                            li ゲームオーバー、スコア、再スタートラベルを配置する。
+                                            li 再スタートラベルタッチするとGameSceneに遷移する。
+
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step12: データ保存
+                    .play-code
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents UserDefaultsを使用したデータ保存ができる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span タップした回数を保存、参照、削除する。
+                                ol.ml20
+                                    li 表示数値、数値Up、End、Save, Clearラベルを配置する。
+                                    li 数値Upラベルをタップすると表示数値が+1(インクリメント)される。
+                                    li Endラベルをタップすると再度GameSceneを表示する。
+                                    li Saveラベルをタップすると表示数値を保存する。
+                                    li Clearラベルをタップすると保存されている表示数値を削除する。
+
+                        button.answerBtn.mb10 ヒント
+
+                        .answer.hidden
+                            ul.guidance
+                                li UserDefaultsの使い方
+                                    include:markdown ../md/Step12/1.md
 
     #react
 
