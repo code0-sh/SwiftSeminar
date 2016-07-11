@@ -711,6 +711,124 @@
             </div>
           </div>
         </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step14: データの共有</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">FirebaseのAuthとRealtime Databaseを使うことができる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents mb10">
+                  <div class="mb10"><span>認証とデータベースを使用したプログラムを作成する。</span></div>
+                  <ol class="ml20">
+                    <li class="mb10">ユーザー登録画面を作成する。(ログイン機能も同一の画面で実装する。)
+                      <div class="mb5">[構成要素]</div>
+                      <ul class="ml20">
+                        <li>画面タイトルを表示するためのLabel</li>
+                        <li>通知メッセージを表示するためのLabel</li>
+                        <li>Emailを入力するためのText Field</li>
+                        <li>Passwordを入力するためのText Field</li>
+                        <li>Nameを入力するためのText Field</li>
+                        <li>登録するためのButton</li>
+                        <li>ログインするためのButton</li>
+                      </ul>
+                    </li>
+                    <li class="mb10">Game画面を作成する。
+                      <div class="mb5">[構成要素]</div>
+                      <ul class="ml20">
+                        <li>画面タイトルを表示するためのLabel</li>
+                        <li>通知メッセージを表示するためのLabel</li>
+                        <li>数値入力のためのText Field</li>
+                        <li>数値保存のためのButton</li>
+                        <li>ランキング画面に遷移するためのButton</li>
+                      </ul>
+                    </li>
+                    <li>ランキング画面を作成する。
+                      <div class="mb5">[構成要素]</div>
+                      <ul class="ml20">
+                        <li>画面タイトルを表示するためのLabel</li>
+                        <li>通知メッセージを表示するためのLabel</li>
+                        <li>ランキングを表示するためのTable View</li>
+                        <li>ログアウトするためのButton</li>
+                      </ul>
+                    </li>
+                  </ol>
+                </dd>
+                <dt class="subject-title">補足事項</dt>
+                <dd class="subject-contents">外部ライブラリ管理ツール
+                  <div class="mb10"><a href="https://cocoapods.org/" target="blank">CocoaPods</a>の導入</div>
+                  <ol class="ml20">
+                    <li>CocoaPodsをインストールする。<pre><code class="lang-bash">$ sudo gem update --system
+$ sudo gem install cocoapods
+</code></pre>
+
+                    </li>
+                    <li>プロジェクトルートでPodfileを作成する。<pre><code class="lang-bash">$ pod init
+</code></pre>
+
+                    </li>
+                    <li>FirebaseのAuthとRealtime Databaseを使用するためのライブラリをPodfileに記入する。<pre><code class="lang-ruby">target &#39;Project&#39; do
+  use_frameworks!
+
+  pod &#39;Firebase&#39;
+  pod &#39;Firebase/Auth&#39;
+  pod &#39;Firebase/Database&#39;
+
+  target &#39;ProjectTests&#39; do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target &#39;ProjectUITests&#39; do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+</code></pre>
+
+                    </li>
+                    <li>Podfileに記入したライブラリをインストールする。<pre><code class="lang-bash">$ pod install
+</code></pre>
+
+                    </li>
+                    <li>以後Xcodeの起動は.xcworkspaceから行うこと。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>ビューコントロラーへの遷移<pre><code class="lang-swift">        let storyboard: UIStoryboard = self.storyboard!
+        let firstViewController = storyboard.instantiateViewController(withIdentifier: &quot;first&quot;) as! FirstViewController
+        self.present(firstViewController, animated: true, completion: nil)
+</code></pre>
+
+                  </li>
+                  <li>NotificationCenterの使い方<pre><code class="lang-swift">        // 通知の監視
+        NotificationCenter.default().addObserver(self,
+                                                 selector: #selector(moveSecondViewController),
+                                                 name: &quot;MoveSecondViewController&quot;,
+                                                 object: nil)
+
+        // 通知を送る
+        NotificationCenter.default().post(name: &quot;MoveSecondViewController&quot; as NSNotification.Name, object: nil)
+
+        // 通知の監視の終了
+        NotificationCenter.default().removeObserver(self)
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
     <div id="react"></div>

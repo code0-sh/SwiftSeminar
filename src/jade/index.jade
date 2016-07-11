@@ -399,6 +399,71 @@ html
                                 li NotificationCenterの使い方
                                     include:markdown ../md/Step13/2.md
 
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step14: データの共有
+                    .play-code
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents FirebaseのAuthとRealtime Databaseを使うことができる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents.mb10
+                                .mb10
+                                    span 認証とデータベースを使用したプログラムを作成する。
+                                ol.ml20
+                                    li.mb10 ユーザー登録画面を作成する。(ログイン機能も同一の画面で実装する。)
+                                        .mb5 [構成要素]
+                                        ul.ml20
+                                            li 画面タイトルを表示するためのLabel
+                                            li 通知メッセージを表示するためのLabel
+                                            li Emailを入力するためのText Field
+                                            li Passwordを入力するためのText Field
+                                            li Nameを入力するためのText Field
+                                            li 登録するためのButton
+                                            li ログインするためのButton
+                                    li.mb10 Game画面を作成する。
+                                        .mb5 [構成要素]
+                                        ul.ml20
+                                            li 画面タイトルを表示するためのLabel
+                                            li 通知メッセージを表示するためのLabel
+                                            li 数値入力のためのText Field
+                                            li 数値保存のためのButton
+                                            li ランキング画面に遷移するためのButton
+                                    li ランキング画面を作成する。
+                                        .mb5 [構成要素]
+                                        ul.ml20
+                                            li 画面タイトルを表示するためのLabel
+                                            li 通知メッセージを表示するためのLabel
+                                            li ランキングを表示するためのTable View
+                                            li ログアウトするためのButton
+
+                            dt.subject-title 補足事項
+                            dd.subject-contents 外部ライブラリ管理ツール
+                                .mb10
+                                    a(href="https://cocoapods.org/", target="blank") CocoaPods
+                                    | の導入
+                                ol.ml20
+                                    li CocoaPodsをインストールする。
+                                        include:markdown ../md/Step14/1.md
+                                    li プロジェクトルートでPodfileを作成する。
+                                        include:markdown ../md/Step14/2.md
+                                    li FirebaseのAuthとRealtime Databaseを使用するためのライブラリをPodfileに記入する。
+                                        include:markdown ../md/Step14/3.md
+                                    li Podfileに記入したライブラリをインストールする。
+                                        include:markdown ../md/Step14/4.md
+                                    li 以後Xcodeの起動は.xcworkspaceから行うこと。
+
+                        button.answerBtn.mb10 ヒント
+
+                        .answer.hidden
+                            ul.guidance
+                                li ビューコントロラーへの遷移
+                                    include:markdown ../md/Step13/1.md
+                                li NotificationCenterの使い方
+                                    include:markdown ../md/Step13/2.md
+
     #react
 
 
