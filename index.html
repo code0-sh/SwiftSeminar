@@ -618,12 +618,12 @@
         <div class="play-list">
           <div class="play-list-item">
             <div class="step-header">
-              <div class="step-num"><i class="fa fa-plus-square"></i> Step12: データ保存</div>
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step12: データの永続化</div>
             </div>
             <div class="play-code">
               <dl class="learn">
                 <dt class="learn-title">習得事項</dt>
-                <dd class="learn-contents">UserDefaultsを使用したデータ保存ができる。</dd>
+                <dd class="learn-contents">UserDefaultsを使用したデータの永続化ができる。</dd>
               </dl>
               <dl class="subject mb10">
                 <dt class="subject-title">課題</dt>
@@ -654,6 +654,55 @@
 
     // スコアをUserDefaultsから削除
     defaults.removeObject(forKey: &quot;Score&quot;)
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step13: シーンとビューコントローラー間の遷移</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">シーンとビューコントローラー間の遷移ができる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents">
+                  <div class="mb10"><span>シーン -> シーン -> ビューコントロラー -> シーン の順で遷移させる。</span></div>
+                  <ol class="ml20">
+                    <li>FirstViewControllerでStartScene,EndSceneと遷移する。</li>
+                    <li>NotificationCenterを使ってEndSceneからSecondViewControllerに遷移する。</li>
+                    <li>SecondViewControllerからFirstViewControllerのStartSceneに遷移する。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>ビューコントロラーへの遷移<pre><code class="lang-swift">        let storyboard: UIStoryboard = self.storyboard!
+        let firstViewController = storyboard.instantiateViewController(withIdentifier: &quot;first&quot;) as! FirstViewController
+        self.present(firstViewController, animated: true, completion: nil)
+</code></pre>
+
+                  </li>
+                  <li>NotificationCenterの使い方<pre><code class="lang-swift">        // 通知の監視
+        NotificationCenter.default().addObserver(self,
+                                                 selector: #selector(moveSecondViewController),
+                                                 name: &quot;MoveSecondViewController&quot;,
+                                                 object: nil)
+
+        // 通知を送る
+        NotificationCenter.default().post(name: &quot;MoveSecondViewController&quot; as NSNotification.Name, object: nil)
+
+        // 通知の監視の終了
+        NotificationCenter.default().removeObserver(self)
 </code></pre>
 
                   </li>

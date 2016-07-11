@@ -348,11 +348,11 @@ html
             .play-list
                 .play-list-item
                     .step-header
-                        .step-num <i class="fa fa-plus-square"></i> Step12: データ保存
+                        .step-num <i class="fa fa-plus-square"></i> Step12: データの永続化
                     .play-code
                         dl.learn
                             dt.learn-title 習得事項
-                            dd.learn-contents UserDefaultsを使用したデータ保存ができる。
+                            dd.learn-contents UserDefaultsを使用したデータの永続化ができる。
                         dl.subject.mb10
                             dt.subject-title 課題
                             dd.subject-contents
@@ -371,6 +371,33 @@ html
                             ul.guidance
                                 li UserDefaultsの使い方
                                     include:markdown ../md/Step12/1.md
+
+            .play-list
+                .play-list-item
+                    .step-header
+                        .step-num <i class="fa fa-plus-square"></i> Step13: シーンとビューコントローラー間の遷移
+                    .play-code
+                        dl.learn
+                            dt.learn-title 習得事項
+                            dd.learn-contents シーンとビューコントローラー間の遷移ができる。
+                        dl.subject.mb10
+                            dt.subject-title 課題
+                            dd.subject-contents
+                                .mb10
+                                    span シーン -> シーン -> ビューコントロラー -> シーン の順で遷移させる。
+                                ol.ml20
+                                    li FirstViewControllerでStartScene,EndSceneと遷移する。
+                                    li NotificationCenterを使ってEndSceneからSecondViewControllerに遷移する。
+                                    li SecondViewControllerからFirstViewControllerのStartSceneに遷移する。
+
+                        button.answerBtn.mb10 ヒント
+
+                        .answer.hidden
+                            ul.guidance
+                                li ビューコントロラーへの遷移
+                                    include:markdown ../md/Step13/1.md
+                                li NotificationCenterの使い方
+                                    include:markdown ../md/Step13/2.md
 
     #react
 
