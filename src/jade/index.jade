@@ -34,16 +34,16 @@ html
                     .play-code
                         ul.guidance
                             li Xcodeを起動し、<i class="marker highlight">Create a new Xcode project</i>を選択する。
-                            img(src="images/step1_xcode_01.png", width="50%")
+                            img(src="images/step1_xcode_01.png", class="capture")
 
                             li <i class="marker highlight">Game</i>を選択して<i class="marker highlight">Next</i>を押下する。
-                            img(src="images/step1_xcode_02.png", width="50%")
+                            img(src="images/step1_xcode_02.png", class="capture")
 
                             li アプリ名、組織名は任意のものを入れて<i class="marker highlight">Next</i>を押下する。
-                            img(src="images/step1_xcode_03.png", width="50%")
+                            img(src="images/step1_xcode_03.png", class="capture")
 
                             li 任意のディレクトリを選択して<i class="marker highlight">Next</i>を押下する。
-                            img(src="images/step1_xcode_04.png", width="50%")
+                            img(src="images/step1_xcode_04.png", class="capture")
 
             .play-list
                 .play-list-item
@@ -53,7 +53,7 @@ html
                         ul.guidance
                             li sksファイル(Actions.sks, GameScene.sks)を削除する。
 
-                            li GameScene.swift : GameSceneの中身を空にする。
+                            li GameScene.swift : GameSceneを以下に変更する。
                                 include:markdown ../md/Step2/1.md
 
                             li GameViewController.swift : viewDidLoadを以下に変更する。
@@ -73,11 +73,13 @@ html
                             dd.subject-contents
                                 .mb10
                                     span SKLabelNodeを使って文字列「Hello, SpriteKit」を表示する。
-                                ul.ml20
+                                ul.ml20.mb10
                                     li フォント名 Chalkduster
                                     li 文字サイズ 30
                                     li 文字色 green
                                     li 文字の位置 画面の中心
+
+                                img(src="images/step3_xcode_01.png", class="capture")
 
                         button.answerBtn.mb10 解答例
 
@@ -98,21 +100,28 @@ html
                             dd.subject-contents
                                 .mb10
                                     span 画像を表示変更する。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li SKSpriteNodeを使って画像を表示する。
                                     li SKTextureを使って画像を変更する。
+
+                                ul.displayTable
+                                  li.tableCell.pr10
+                                    img(src="images/step4_xcode_03.png", class="capture mr10")
+                                  li.tableCell
+                                     img(src="images/step4_xcode_04.png", class="capture")
 
                         button.answerBtn.mb10 解答例
 
                         .answer.hidden
                             ul.guidance
                                 li Assets.xcassetsに画像ファイル(person.png)をドラッグアンドドロップする。
-                                img(src="images/step4_xcode_01.png", width="50%")
+                                img(src="images/step4_xcode_01.png", class="capture")
 
                                 include:markdown ../md/Step4/1.md
 
                                 li Assets.xcassetsに画像ファイル(airplane.png)をドラッグアンドドロップする。
-                                img(src="images/step4_xcode_02.png", width="50%")
+                                  div
+                                    img(src="images/step4_xcode_02.png", class="capture")
 
                                 include:markdown ../md/Step4/2.md
 
@@ -129,15 +138,18 @@ html
                             dd.subject-contents.mb10
                                 .mb10
                                     span SKActionを使って対象物にアニメーションを付ける。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li SKSpriteNodeを使用しアニメーションの対象物を生成する。
                                     li 対象物を配置する。
                                     li SKActionを使用しアニメーションを作成する。
                                     li 作成したアニメーションを対象物に設定する。
 
+                                img(src="images/step5_xcode_02.png", class="capture")
+
                             dt.subject-title 補足事項
                             dd.subject-contents 対象物はbackground.pngを使用するためAssets.xcassetsに画像ファイル(background.png)をドラッグアンドドロップする。
-                                img(src="images/step5_xcode_01.png", width="50%")
+                              div
+                                img(src="images/step5_xcode_01.png", class="capture")
 
                         button.answerBtn.mb10 解答例
 
@@ -160,15 +172,18 @@ html
                             dd.subject-contents.mb10
                                 .mb10
                                     span physicsWorld、physicsBody、SKPhysicsBodyを使って物理空間を生成し、他物体との衝突イベントを生じさせる。衝突時に一方を消す。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li SKSpriteNodeを使用し対象物を生成する。
                                     li 対象物をランダムに配置する。
                                     li physicsWorld、physicsBody、SKPhysicsBodyを使って物理空間を生成する。
                                     li 衝突イベントを設定する。
 
+                                img(src="images/step6_xcode_02.png", class="capture")
+
                             dt.subject-title 補足事項
                             dd.subject-contents 対象物はenemy.pngを使用するためAssets.xcassetsに画像ファイル(enemy.png)をドラッグアンドドロップする。
-                                img(src="images/step6_xcode_01.png", width="50%")
+                              div
+                                img(src="images/step6_xcode_01.png", class="capture")
 
                         button.answerBtn.mb10 ヒント
 
@@ -198,11 +213,13 @@ html
                             dd.subject-contents
                                 .mb10
                                     span タップすると飛行機がタップ位置に移動する。ダブルタップの場合移動後に弾丸を発射する。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li SKSpriteNodeを使用し飛行機を生成し配置する。
                                     li タップ開始イベントを設定する。
                                     li タップ終了イベントを設定する。
                                     li SKShapeNodeを使用し弾丸をタップ位置に生成し、アニメーションを設定する。
+
+                                img(src="images/step7_xcode_01.png", class="capture")
 
                         button.answerBtn.mb10 ヒント
 
@@ -228,14 +245,17 @@ html
                             dd.subject-contents.mb10
                                 .mb10
                                     span タップすると星のパーティクルが発生し、効果音が鳴る。パーティクルは一定時間経つと消える。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li SKEmitterNodeを使用し星のパーティクルを生成する。
                                     li SKActionを設定し効果音をつける。
                                     li タップ開始イベントで1,2を実行する。
 
+                                img(src="images/step8_xcode_02.png", class="capture")
+
                             dt.subject-title 補足事項
                             dd.subject-contents 星(star.png)と効果音(sound_explosion.mp3)を使用するためAssets.xcassetsに対象ファイルをドラッグアンドドロップする。
-                                img(src="images/step8_xcode_01.png", width="50%")
+                              div
+                                img(src="images/step8_xcode_01.png", class="capture")
 
                         button.answerBtn.mb10 ヒント
 
@@ -259,11 +279,13 @@ html
                             dd.subject-contents
                                 .mb10
                                     span 端末を傾けると飛行機が横(X軸方向)に移動する。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li SKSpriteNodeを使用して飛行機を生成する。
                                     li Sceneと飛行機に物理空間を設定する。
                                     li 加速度データを使用して飛行機のx方向の移動距離を算出する。
                                     li 1フレームごとに3から飛行機の位置を更新する。
+
+                                img(src="images/step9_xcode_01.png", class="capture")
 
                         button.answerBtn.mb10 ヒント
 
@@ -293,10 +315,18 @@ html
                             dd.subject-contents
                                 .mb10
                                     span 3つのシーン(HomeScene、GameScene、ResultScene)を生成して遷移させる。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li 3つのシーンを生成する。
                                     li 遷移イベントのトリガー(タッチ開始イベント)を生成する。
                                     li 遷移元から遷移先にuserDataを使用しデータを渡す。
+
+                                ul.displayTable
+                                  li.tableCell.pr10
+                                    img(src="images/step10_xcode_01.png", class="capture")
+                                  li.tableCell.pr10
+                                    img(src="images/step10_xcode_02.png", class="capture")
+                                  li.tableCell
+                                    img(src="images/step10_xcode_03.png", class="capture")
 
                         button.answerBtn.mb10 ヒント
 
@@ -320,7 +350,7 @@ html
                             dd.subject-contents
                                 .mb10
                                     span シューティングゲームを作成する。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li 3つのシーン(HomeScene,GameScene,ResultScene)を生成する。
                                     li HomeScene
                                         ul
@@ -345,6 +375,14 @@ html
                                             li ゲームオーバー、スコア、再スタートラベルを配置する。
                                             li 再スタートラベルタッチするとGameSceneに遷移する。
 
+                                ul.displayTable
+                                  li.tableCell.pr10
+                                    img(src="images/step11_xcode_01.png", class="capture")
+                                  li.tableCell.pr10
+                                    img(src="images/step11_xcode_02.png", class="capture")
+                                  li.tableCell
+                                    img(src="images/step11_xcode_03.png", class="capture")
+
             .play-list
                 .play-list-item
                     .step-header
@@ -358,12 +396,14 @@ html
                             dd.subject-contents
                                 .mb10
                                     span タップした回数を保存、参照、削除する。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li 表示数値、数値Up、End、Save, Clearラベルを配置する。
                                     li 数値Upラベルをタップすると表示数値が+1(インクリメント)される。
                                     li Endラベルをタップすると再度GameSceneを表示する。
                                     li Saveラベルをタップすると表示数値を保存する。
                                     li Clearラベルをタップすると保存されている表示数値を削除する。
+
+                                img(src="images/step12_xcode_01.png", class="capture")
 
                         button.answerBtn.mb10 ヒント
 
@@ -385,10 +425,17 @@ html
                             dd.subject-contents
                                 .mb10
                                     span シーン -> シーン -> ビューコントロラー -> シーン の順で遷移させる。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li FirstViewControllerでStartScene,EndSceneと遷移する。
                                     li NotificationCenterを使ってEndSceneからSecondViewControllerに遷移する。
                                     li SecondViewControllerからFirstViewControllerのStartSceneに遷移する。
+                                ul.displayTable
+                                  li.tableCell.pr10
+                                    img(src="images/step13_xcode_01.png", class="capture")
+                                  li.tableCell.pr10
+                                    img(src="images/step13_xcode_02.png", class="capture")
+                                  li.tableCell
+                                    img(src="images/step13_xcode_03.png", class="capture")
 
                         button.answerBtn.mb10 ヒント
 
@@ -412,7 +459,7 @@ html
                             dd.subject-contents.mb10
                                 .mb10
                                     span 認証とデータベースを使用したプログラムを作成する。
-                                ol.ml20
+                                ol.ml20.mb10
                                     li.mb10 ユーザー登録画面を作成する。(ログイン機能も同一の画面で実装する。)
                                         .mb5 [構成要素]
                                         ul.ml20
@@ -438,6 +485,14 @@ html
                                             li 通知メッセージを表示するためのLabel
                                             li ランキングを表示するためのTable View
                                             li ログアウトするためのButton
+
+                                ul.displayTable
+                                  li.tableCell.pr10
+                                    img(src="images/step14_xcode_01.png", class="capture")
+                                  li.tableCell.pr10
+                                    img(src="images/step14_xcode_02.png", class="capture")
+                                  li.tableCell
+                                    img(src="images/step14_xcode_03.png", class="capture")
 
                             dt.subject-title 補足事項
                             dd.subject-contents.mb20
