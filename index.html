@@ -760,7 +760,7 @@
                   </ol>
                 </dd>
                 <dt class="subject-title">補足事項</dt>
-                <dd class="subject-contents">外部ライブラリ管理ツール
+                <dd class="subject-contents mb20"><span class="emphasis">外部ライブラリ管理ツール</span>
                   <div class="mb10"><a href="https://cocoapods.org/" target="blank">CocoaPods</a>の導入</div>
                   <ol class="ml20">
                     <li>CocoaPodsをインストールする。<pre><code class="lang-bash">$ sudo gem update --system
@@ -800,27 +800,87 @@ end
                     <li>以後Xcodeの起動は.xcworkspaceから行うこと。</li>
                   </ol>
                 </dd>
+                <dd class="subject-contents"><span class="emphasis">Mobile Backend as a Service（MBaas）</span>
+                  <div class="mb10"><a href="https://firebase.google.com/" target="blank">Firebase</a>の導入</div>
+                  <ol class="ml20">
+                    <li>Googleアカウントでサインインする。</li>
+                    <li>新規プロジェクトの作成する。</li>
+                    <li>iOSアプリにFirebaseを追加する。</li>
+                    <li>ダウンロードしたGoogleService-Info.plistをプロジェクトルートに配置する。</li>
+                    <li>メインのAppDelegateクラスに初期化コードを追加する。<pre><code class="lang-swift">import UIKit
+import Firebase // 追加
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  var window: UIWindow?
+
+  func application(application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
+    -&gt; Bool {
+    FIRApp.configure() // 追加
+    return true
+  }
+}
+</code></pre>
+
+                    </li>
+                    <li>管理画面 Authentication > ログイン方法でメール/パスワードでのプロバイダにログインを有効にする。</li>
+                  </ol>
+                </dd>
               </dl>
               <button class="answerBtn mb10">ヒント</button>
               <div class="answer hidden">
                 <ul class="guidance">
-                  <li>ビューコントロラーへの遷移<pre><code class="lang-swift">        let storyboard: UIStoryboard = self.storyboard!
-        let firstViewController = storyboard.instantiateViewController(withIdentifier: &quot;first&quot;) as! FirstViewController
-        self.present(firstViewController, animated: true, completion: nil)
+                  <li>登録処理<pre><code class="lang-swift">        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user:FIRUser?, error:NSError?) in
+            if let error = error {
+                //
+                return
+            }
+
+            if let user = user {
+                guard let uid: String = user.uid, name = self.name.text, email = self.email.text else {
+                    return
+                }
+                let rootRef = FIRDatabase.database().reference()
+                rootRef.child(&quot;users&quot;).child(uid).setValue([&quot;name&quot;: name, &quot;email&quot;: email, &quot;point&quot;: 0])
+            }
+        })
 </code></pre>
 
                   </li>
-                  <li>NotificationCenterの使い方<pre><code class="lang-swift">        // 通知の監視
-        NotificationCenter.default().addObserver(self,
-                                                 selector: #selector(moveSecondViewController),
-                                                 name: &quot;MoveSecondViewController&quot;,
-                                                 object: nil)
+                  <li>サインイン処理<pre><code class="lang-swift">        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                //
+                return
+            }
+            //
+        }
+</code></pre>
 
-        // 通知を送る
-        NotificationCenter.default().post(name: &quot;MoveSecondViewController&quot; as NSNotification.Name, object: nil)
+                  </li>
+                  <li>保存処理<pre><code class="lang-swift">        if let user = FIRAuth.auth()?.currentUser {
+            guard let point = Int(self.point.text!), uid: String = user.uid else {
+                return
+            }
+            let rootRef = FIRDatabase.database().reference()
+            rootRef.child(&quot;users&quot;).child(uid).observeSingleEvent(of: .value, with: { snapshot in
+                if ( snapshot.value is NSNull ) {
+                    //
+                } else {
+                    rootRef.child(&quot;users/\(user.uid)/point&quot;).setValue(point)
+                }
+            })
+        }
+</code></pre>
 
-        // 通知の監視の終了
-        NotificationCenter.default().removeObserver(self)
+                  </li>
+                  <li>サインアウト処理<pre><code class="lang-swift">        do {
+            try FIRAuth.auth()?.signOut()
+            //
+        } catch let error as NSError {
+            //
+        }
 </code></pre>
 
                   </li>
