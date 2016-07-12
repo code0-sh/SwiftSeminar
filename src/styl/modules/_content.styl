@@ -91,3 +91,24 @@
 .emphasis
 	font-weight bold
 
+.capture
+	width 100%
+	max-width 300px
+	min-width 150px
+
+@media screen and (min-width: 550px)
+	.displayTable
+		display table
+
+		.tableCell
+			display table-cell
+
+			img
+				vertical-align top
+
+@media screen and (max-width: 550px)
+	.displayTable
+		display block
+
+		.tableCell
+			display block
