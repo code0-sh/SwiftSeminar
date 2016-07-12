@@ -158,6 +158,10 @@ body {
   cursor: pointer;
   opacity: 0.5;
 }
+.subject .subject-title {
+  font-weight: bold;
+  color: #a52a2a;
+}
 .subject .subject-title:before {
   content: "[";
 }
@@ -166,6 +170,9 @@ body {
 }
 .hidden {
   display: none;
+}
+.emphasis {
+  font-weight: bold;
 }
 @keyframes show {
   from {

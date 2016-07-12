@@ -711,6 +711,184 @@
             </div>
           </div>
         </div>
+        <div class="play-list">
+          <div class="play-list-item">
+            <div class="step-header">
+              <div class="step-num"><i class="fa fa-plus-square"></i> Step14: データの共有</div>
+            </div>
+            <div class="play-code">
+              <dl class="learn">
+                <dt class="learn-title">習得事項</dt>
+                <dd class="learn-contents">FirebaseのAuthとRealtime Databaseを使うことができる。</dd>
+              </dl>
+              <dl class="subject mb10">
+                <dt class="subject-title">課題</dt>
+                <dd class="subject-contents mb10">
+                  <div class="mb10"><span>認証とデータベースを使用したプログラムを作成する。</span></div>
+                  <ol class="ml20">
+                    <li class="mb10">ユーザー登録画面を作成する。(ログイン機能も同一の画面で実装する。)
+                      <div class="mb5">[構成要素]</div>
+                      <ul class="ml20">
+                        <li>画面タイトルを表示するためのLabel</li>
+                        <li>通知メッセージを表示するためのLabel</li>
+                        <li>Emailを入力するためのText Field</li>
+                        <li>Passwordを入力するためのText Field</li>
+                        <li>Nameを入力するためのText Field</li>
+                        <li>登録するためのButton</li>
+                        <li>ログインするためのButton</li>
+                      </ul>
+                    </li>
+                    <li class="mb10">Game画面を作成する。
+                      <div class="mb5">[構成要素]</div>
+                      <ul class="ml20">
+                        <li>画面タイトルを表示するためのLabel</li>
+                        <li>通知メッセージを表示するためのLabel</li>
+                        <li>数値入力のためのText Field</li>
+                        <li>数値保存のためのButton</li>
+                        <li>ランキング画面に遷移するためのButton</li>
+                      </ul>
+                    </li>
+                    <li>ランキング画面を作成する。
+                      <div class="mb5">[構成要素]</div>
+                      <ul class="ml20">
+                        <li>画面タイトルを表示するためのLabel</li>
+                        <li>通知メッセージを表示するためのLabel</li>
+                        <li>ランキングを表示するためのTable View</li>
+                        <li>ログアウトするためのButton</li>
+                      </ul>
+                    </li>
+                  </ol>
+                </dd>
+                <dt class="subject-title">補足事項</dt>
+                <dd class="subject-contents mb20"><span class="emphasis">外部ライブラリ管理ツール</span>
+                  <div class="mb10"><a href="https://cocoapods.org/" target="blank">CocoaPods</a>の導入</div>
+                  <ol class="ml20">
+                    <li>CocoaPodsをインストールする。<pre><code class="lang-bash">$ sudo gem update --system
+$ sudo gem install cocoapods
+</code></pre>
+
+                    </li>
+                    <li>プロジェクトルートでPodfileを作成する。<pre><code class="lang-bash">$ pod init
+</code></pre>
+
+                    </li>
+                    <li>FirebaseのAuthとRealtime Databaseを使用するためのライブラリをPodfileに記入する。<pre><code class="lang-ruby">target &#39;Project&#39; do
+  use_frameworks!
+
+  pod &#39;Firebase&#39;
+  pod &#39;Firebase/Auth&#39;
+  pod &#39;Firebase/Database&#39;
+
+  target &#39;ProjectTests&#39; do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target &#39;ProjectUITests&#39; do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
+</code></pre>
+
+                    </li>
+                    <li>Podfileに記入したライブラリをインストールする。<pre><code class="lang-bash">$ pod install
+</code></pre>
+
+                    </li>
+                    <li>以後Xcodeの起動は.xcworkspaceから行うこと。</li>
+                  </ol>
+                </dd>
+                <dd class="subject-contents"><span class="emphasis">Mobile Backend as a Service（MBaas）</span>
+                  <div class="mb10"><a href="https://firebase.google.com/" target="blank">Firebase</a>の導入</div>
+                  <ol class="ml20">
+                    <li>Googleアカウントでサインインする。</li>
+                    <li>新規プロジェクトの作成する。</li>
+                    <li>iOSアプリにFirebaseを追加する。</li>
+                    <li>ダウンロードしたGoogleService-Info.plistをプロジェクトルートに配置する。</li>
+                    <li>メインのAppDelegateクラスに初期化コードを追加する。<pre><code class="lang-swift">import UIKit
+import Firebase // 追加
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  var window: UIWindow?
+
+  func application(application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?)
+    -&gt; Bool {
+    FIRApp.configure() // 追加
+    return true
+  }
+}
+</code></pre>
+
+                    </li>
+                    <li>管理画面 Authentication > ログイン方法でメール/パスワードでのプロバイダにログインを有効にする。</li>
+                  </ol>
+                </dd>
+              </dl>
+              <button class="answerBtn mb10">ヒント</button>
+              <div class="answer hidden">
+                <ul class="guidance">
+                  <li>登録処理<pre><code class="lang-swift">        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user:FIRUser?, error:NSError?) in
+            if let error = error {
+                //
+                return
+            }
+
+            if let user = user {
+                guard let uid: String = user.uid, name = self.name.text, email = self.email.text else {
+                    return
+                }
+                let rootRef = FIRDatabase.database().reference()
+                rootRef.child(&quot;users&quot;).child(uid).setValue([&quot;name&quot;: name, &quot;email&quot;: email, &quot;point&quot;: 0])
+            }
+        })
+</code></pre>
+
+                  </li>
+                  <li>サインイン処理<pre><code class="lang-swift">        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+            if let error = error {
+                //
+                return
+            }
+            //
+        }
+</code></pre>
+
+                  </li>
+                  <li>保存処理<pre><code class="lang-swift">        if let user = FIRAuth.auth()?.currentUser {
+            guard let point = Int(self.point.text!), uid: String = user.uid else {
+                return
+            }
+            let rootRef = FIRDatabase.database().reference()
+            rootRef.child(&quot;users&quot;).child(uid).observeSingleEvent(of: .value, with: { snapshot in
+                if ( snapshot.value is NSNull ) {
+                    //
+                } else {
+                    rootRef.child(&quot;users/\(user.uid)/point&quot;).setValue(point)
+                }
+            })
+        }
+</code></pre>
+
+                  </li>
+                  <li>サインアウト処理<pre><code class="lang-swift">        do {
+            try FIRAuth.auth()?.signOut()
+            //
+        } catch let error as NSError {
+            //
+        }
+</code></pre>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
     <div id="react"></div>
