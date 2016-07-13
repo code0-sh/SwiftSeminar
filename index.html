@@ -77,6 +77,17 @@
 
                 </li>
               </ul>
+              <dl class="subject mb10">
+                <dt class="subject-title">補足事項</dt>
+                <dd class="subject-contents"><span class="emphasis">SpriteKitのビュー、シーン、ノード、アクション</span>
+                  <ul class="ml20 mb10">
+                    <li>ビュー:シーンをのせる舞台。UIViewControllerのサブクラス</li>
+                    <li>シーン:ゲーム画面、結果画面などの各画面。SKSceneのサブクラス</li>
+                    <li>ノード:シーンにのせる登場人物。SKNodeのサブクラス(SKSpriteNode,SKLabelNode,..)</li>
+                    <li>アクション:ノードの振る舞い。SKActionのメソッドで実行する(removeFromParent,move,..)</li>
+                  </ul><img src="images/step2_xcode_01.png">
+                </dd>
+              </dl>
             </div>
           </div>
         </div>
@@ -864,6 +875,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               <button class="answerBtn mb10">ヒント</button>
               <div class="answer hidden">
                 <ul class="guidance">
+                  <li>Firebaseで保存するデータ構造<pre><code class="lang-json">{
+  &quot;users&quot; : {
+    &quot;dLPCJxzqQ8YnC5KL0ZF8TFqVlHn2&quot; : {
+      &quot;email&quot; : &quot;test2@gmail.com&quot;,
+      &quot;name&quot; : &quot;test2&quot;,
+      &quot;point&quot; : 1
+    },
+    &quot;kGac0j2ESJebU2zKW9xvLg06jum2&quot; : {
+      &quot;email&quot; : &quot;test@gmail.com&quot;,
+      &quot;name&quot; : &quot;test&quot;,
+      &quot;point&quot; : 34
+    }
+  }
+}
+</code></pre>
+
+                  </li>
                   <li>登録処理<pre><code class="lang-swift">        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user:FIRUser?, error:NSError?) in
             if let error = error {
                 //
