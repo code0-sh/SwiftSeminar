@@ -58,6 +58,17 @@ html
 
                             li GameViewController.swift : viewDidLoadを以下に変更する。
                                 include:markdown ../md/Step2/2.md
+                        dl.subject.mb10
+                            dt.subject-title 補足事項
+                            dd.subject-contents
+                                span.emphasis SpriteKitのビュー、シーン、ノード、アクション
+                                ul.ml20.mb10
+                                    li ビュー:シーンをのせる舞台。UIViewControllerのサブクラス
+                                    li シーン:ゲーム画面、結果画面などの各画面。SKSceneのサブクラス
+                                    li ノード:シーンにのせる登場人物。SKNodeのサブクラス(SKSpriteNode,SKLabelNode,..)
+                                    li アクション:ノードの振る舞い。SKActionのメソッドで実行する(removeFromParent,move,..)
+
+                                img(src="images/step2_xcode_01.png")
 
             .play-list
                 .play-list-item
@@ -528,6 +539,8 @@ html
 
                         .answer.hidden
                             ul.guidance
+                                li Firebaseで保存するデータ構造
+                                    include:markdown ../md/Step14/10.md
                                 li 登録処理
                                     include:markdown ../md/Step14/6.md
                                 li サインイン処理
